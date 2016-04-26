@@ -49,15 +49,15 @@ public class OpenWeatherService {
             String jsonData = response.body().string();
             if(response.isSuccessful()) {
                 JSONObject weatherJSON = new JSONObject(jsonData);
-                JSONArray forecastsJSON = weatherJSON.getJSONArray("forecasts");
+                String city = weatherJSON.getJSONObject("city").getString("name");
+                String country = weatherJSON.getJSONObject("city").getString("country");
+                JSONArray forecastsJSON = weatherJSON.getJSONArray("list");
                 for (int i = 0; i < forecastsJSON.length(); i++) {
                     JSONObject forcastJSON = forecastsJSON.getJSONObject(i);
-                    String city = forcastJSON.getJSONObject("city").getString("name");
-                    String country = forcastJSON.getJSONObject("city").getString("country");
                     Double temp = forcastJSON.getJSONObject("main").getDouble("temp");
                     Double maxTemp = forcastJSON.getJSONObject("main").getDouble("temp_max");
                     Double minTemp = forcastJSON.getJSONObject("main").getDouble("temp_min");
-                    String weather = forcastJSON.getJSONObject("weather").getString("description");
+                    String weather = forcastJSON.getJSONArray("weather").getJSONObject(0).getString("description");
                     String wind = forcastJSON.getJSONObject("wind").getString("speed");
                 }
             }

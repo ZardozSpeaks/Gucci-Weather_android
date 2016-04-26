@@ -9,10 +9,18 @@
         android:layout_width="wrap_content"
         android:layout_height="fill_parent"
         android:id="@+id/imageView2"
-        android:layout_alignParentTop="true"
+        android:src="@drawable/background"
+        android:scaleType="centerCrop"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:src="@drawable/background"
-        android:scaleType="centerCrop" />
+        android:layout_alignParentTop="true" />
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/gucciWeatherListView"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>

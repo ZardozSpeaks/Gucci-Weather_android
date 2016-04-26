@@ -4,9 +4,11 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import android.util.Log;
-import android.widget.ArrayAdapter;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.widget.ListView;
+
+import com.example.guest.gucciweather.adapters.WeatherListAdapter;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -21,7 +23,8 @@ import okhttp3.Response;
 public class GucciWeatherActivity extends AppCompatActivity {
     public ArrayList<WeatherForecast> mWeather = new ArrayList<>();
     public static final String TAG = GucciWeatherActivity.class.getSimpleName();
-    @Bind(R.id.gucciWeatherListView) ListView mGucciListView;
+    @Bind(R.id.recyclerView) ListView mRecyclerView;
+    private WeatherListAdapter mAdapter;
 
 
     @Override
@@ -51,24 +54,14 @@ public class GucciWeatherActivity extends AppCompatActivity {
                 GucciWeatherActivity.this.runOnUiThread(new Runnable() {
                    @Override
                    public void run() {
-
-                       String[] weatherForecasts = new String[mWeather.size()];
-                       for (int i = 0; i < weatherForecasts.length; i++) {
-                           weatherForecasts[i] = mWeather.get(i).getCity();
-                           ArrayAdapter adapter = new ArrayAdapter(GucciWeatherActivity.this,
-                                   android.R.layout.simple_list_item_1, weatherForecasts);
-                           mGucciListView.setAdapter(adapter);
-
-                           for (WeatherForecast weatherForecast : mWeather) {
-                               Log.d(TAG, "City: " + weatherForecast.getCity());
-                               Log.d(TAG, "Country: " + weatherForecast.getCountry());
-                               Log.d(TAG, "Temperature: " + weatherForecast.getTemp());
-                           }
-                       }
+                       mAdapter = new WeatherListAdapter(getApplicationContext(), mWeather);
+                       mRecyclerView.setAdapter(mAdapter);
+                       RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(GucciWeatherActivity.this);
+                       mRecyclerView.setLayoutManager(layoutManager);
+                       mRecyclerView.setHasFixedSize(true);
                    }
                 });
             }
         });
-
     }
 }

@@ -46,9 +46,4 @@
         android:hint="Enter City Name"
         android:background="@color/colorIcons"/>
 
-    <Spinner
-        android:id="@+id/countrySpinner"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
-    </Spinner>
 </RelativeLayout>

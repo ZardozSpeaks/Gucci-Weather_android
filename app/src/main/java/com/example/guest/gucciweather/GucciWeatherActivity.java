@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import com.example.guest.gucciweather.adapters.WeatherListAdapter;
@@ -23,7 +24,7 @@ import okhttp3.Response;
 public class GucciWeatherActivity extends AppCompatActivity {
     public ArrayList<WeatherForecast> mWeather = new ArrayList<>();
     public static final String TAG = GucciWeatherActivity.class.getSimpleName();
-    @Bind(R.id.recyclerView) ListView mRecyclerView;
+    @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
     private WeatherListAdapter mAdapter;
 
 

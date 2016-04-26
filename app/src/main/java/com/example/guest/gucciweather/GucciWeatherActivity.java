@@ -3,6 +3,7 @@ package com.example.guest.gucciweather;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
 import android.util.Log;
 
 import java.io.IOException;
@@ -11,8 +12,10 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
+
 public class GucciWeatherActivity extends AppCompatActivity {
     public static final String TAG = GucciWeatherActivity.class.getSimpleName();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,5 +46,6 @@ public class GucciWeatherActivity extends AppCompatActivity {
                 }
             }
         });
+
     }
 }
